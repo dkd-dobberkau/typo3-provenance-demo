@@ -24,7 +24,7 @@ ddev start
 ddev launch
 ```
 
-The first `ddev start` takes a few minutes. It installs TYPO3 14 and the four
+The first `ddev start` takes a few minutes. It installs TYPO3 14 and the five
 provenance extensions, creates the demo pages, generates the site's Ed25519
 key and the provenance records. Later starts skip the steps that are done.
 
@@ -44,6 +44,10 @@ and password are written to `.ddev/admin-credentials.txt`.
   <https://typo3-provenance-demo.ddev.site/.well-known/content-provenance/keys>
 - **The XML sitemap** and the canonical URL of each page, which level L1
   requires: <https://typo3-provenance-demo.ddev.site/sitemap.xml>
+- **Facts in the backend**: open a text element, select words in the rich
+  text editor and press **Fact**. The dialog can look the fact up in
+  Wikidata (`provenance_wikidata`) and fill subject, predicate, value and
+  evidence from a statement.
 
 ## Verify the signatures
 
@@ -87,6 +91,7 @@ ddev start
 | `provenance_signing` | [typo3-provenance-signing](https://github.com/dkd-dobberkau/typo3-provenance-signing) |
 | `provenance_audit` | [typo3-provenance-audit](https://github.com/dkd-dobberkau/typo3-provenance-audit) |
 | `provenance_facts` | [typo3-provenance-facts](https://github.com/dkd-dobberkau/typo3-provenance-facts) |
+| `provenance_wikidata` | [typo3-provenance-wikidata](https://github.com/dkd-dobberkau/typo3-provenance-wikidata) (editorial aid, optional) |
 
 ## Links
 

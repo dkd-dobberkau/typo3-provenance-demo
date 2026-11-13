@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3681c1e9bc221534d43ec11bcddcc66b",
+    "content-hash": "13eb8247b4e52ad69f86c023a10251c6",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -306,7 +306,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dkd-dobberkau/typo3-provenance-facts.git",
-                "reference": "39621cdfa0ebbb1671102d38c2a187fda9a6eb67"
+                "reference": "f9bad36236586660baab4352cfa4e1985425c054"
             },
             "require": {
                 "cms-provenance/provenance": "^0.1@dev",
@@ -373,7 +373,7 @@
                 "issues": "https://github.com/dkd-dobberkau/typo3-provenance-facts/issues",
                 "source": "https://github.com/dkd-dobberkau/typo3-provenance-facts"
             },
-            "time": "2026-11-13T21:09:30+00:00"
+            "time": "2026-11-13T22:46:44+00:00"
         },
         {
             "name": "cms-provenance/provenance-signing",
@@ -449,6 +449,81 @@
                 "source": "https://github.com/dkd-dobberkau/typo3-provenance-signing"
             },
             "time": "2026-11-13T21:17:03+00:00"
+        },
+        {
+            "name": "cms-provenance/provenance-wikidata",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dkd-dobberkau/typo3-provenance-wikidata.git",
+                "reference": "59b9cc7b971202fc7c24e79c5da273f4a95fd683"
+            },
+            "require": {
+                "cms-provenance/provenance-facts": "^0.1@dev",
+                "php": "^8.2",
+                "typo3/cms-backend": "^13.4 || ^14.0",
+                "typo3/cms-core": "^13.4 || ^14.0",
+                "typo3/cms-rte-ckeditor": "^13.4 || ^14.0"
+            },
+            "require-dev": {
+                "typo3/cms-fluid": "^13.4 || ^14.0",
+                "typo3/cms-frontend": "^13.4 || ^14.0",
+                "typo3/testing-framework": "^9.7"
+            },
+            "default-branch": true,
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "provenance_wikidata",
+                    "version": "0.0.0",
+                    "Package": {
+                        "providesPackages": []
+                    },
+                    "web-dir": ".Build/public"
+                },
+                "branch-alias": {
+                    "dev-main": "0.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "CmsProvenance\\ProvenanceWikidata\\": "Classes/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "CmsProvenance\\ProvenanceWikidata\\Tests\\": "Tests/"
+                }
+            },
+            "scripts": {
+                "test:unit": [
+                    "phpunit -c Build/phpunit/UnitTests.xml"
+                ],
+                "test:functional": [
+                    "phpunit -c Build/phpunit/FunctionalTests.xml"
+                ],
+                "test": [
+                    "@test:unit",
+                    "@test:functional"
+                ]
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "description": "Research Content Provenance facts in Wikidata from the fact dialog of the rich text editor.",
+            "homepage": "https://cms-provenance.org",
+            "keywords": [
+                "TYPO3",
+                "content-provenance",
+                "extension",
+                "provenance",
+                "wikidata"
+            ],
+            "support": {
+                "issues": "https://github.com/dkd-dobberkau/typo3-provenance-wikidata/issues",
+                "source": "https://github.com/dkd-dobberkau/typo3-provenance-wikidata"
+            },
+            "time": "2026-11-13T23:03:23+00:00"
         },
         {
             "name": "composer/class-map-generator",
@@ -7239,7 +7314,8 @@
         "cms-provenance/provenance-audit": 20,
         "cms-provenance/provenance-demo-site": 20,
         "cms-provenance/provenance-facts": 20,
-        "cms-provenance/provenance-signing": 20
+        "cms-provenance/provenance-signing": 20,
+        "cms-provenance/provenance-wikidata": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

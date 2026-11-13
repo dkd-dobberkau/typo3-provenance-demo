@@ -10,6 +10,7 @@
         "cms-provenance/provenance-demo-site": "@dev",
         "cms-provenance/provenance-facts": "@dev",
         "cms-provenance/provenance-signing": "@dev",
+        "cms-provenance/provenance-wikidata": "@dev",
         "typo3/cms-backend": "^14.3",
         "typo3/cms-core": "^14.3",
         "typo3/cms-fluid-styled-content": "^14.3",
@@ -37,6 +38,10 @@
         {
             "type": "git",
             "url": "https://github.com/dkd-dobberkau/typo3-provenance-facts.git"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/dkd-dobberkau/typo3-provenance-wikidata.git"
         }
     ],
     "config": {
