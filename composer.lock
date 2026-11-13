@@ -128,7 +128,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dkd-dobberkau/typo3-provenance.git",
-                "reference": "4c5ca8b69b35383c499af181fe212452ef90a813"
+                "reference": "63190c225b8eed0b1cf765c00c22e4650f22ff00"
             },
             "require": {
                 "php": "^8.2",
@@ -193,7 +193,7 @@
                 "issues": "https://github.com/dkd-dobberkau/typo3-provenance/issues",
                 "source": "https://github.com/dkd-dobberkau/typo3-provenance"
             },
-            "time": "2026-11-13T19:43:40+00:00"
+            "time": "2026-11-13T20:35:18+00:00"
         },
         {
             "name": "cms-provenance/provenance-audit",
@@ -201,7 +201,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dkd-dobberkau/typo3-provenance-audit.git",
-                "reference": "6be0973bd220854d37be901e33d98d89e2f2c0bf"
+                "reference": "5084d5b509c778ab02615643de3915d05ad50bed"
             },
             "require": {
                 "cms-provenance/provenance": "^0.1@dev",
@@ -266,7 +266,7 @@
                 "issues": "https://github.com/dkd-dobberkau/typo3-provenance-audit/issues",
                 "source": "https://github.com/dkd-dobberkau/typo3-provenance-audit"
             },
-            "time": "2026-11-13T19:43:40+00:00"
+            "time": "2026-11-13T20:35:21+00:00"
         },
         {
             "name": "cms-provenance/provenance-demo-site",
@@ -305,7 +305,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dkd-dobberkau/typo3-provenance-facts.git",
-                "reference": "8e60d5641835d699acf5fd8f0a36661b6ddea8b3"
+                "reference": "68d4babd17dfc0435dbf6e8d76039dd41e01dece"
             },
             "require": {
                 "cms-provenance/provenance": "^0.1@dev",
@@ -372,7 +372,7 @@
                 "issues": "https://github.com/dkd-dobberkau/typo3-provenance-facts/issues",
                 "source": "https://github.com/dkd-dobberkau/typo3-provenance-facts"
             },
-            "time": "2026-11-13T19:43:40+00:00"
+            "time": "2026-11-13T20:35:19+00:00"
         },
         {
             "name": "cms-provenance/provenance-signing",
