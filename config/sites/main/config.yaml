@@ -1,0 +1,18 @@
+rootPageId: 1
+base: 'https://typo3-provenance-demo.ddev.site/'
+websiteTitle: 'Content Provenance Demo'
+languages:
+  - title: English
+    enabled: true
+    languageId: 0
+    base: /
+    locale: en_US.UTF-8
+    navigationTitle: EN
+    hreflang: en-US
+    flag: us
+    websiteTitle: 'Content Provenance Demo'
+dependencies:
+  - typo3/fluid-styled-content
+  - cms-provenance/provenance
+  - cms-provenance/provenance-facts
+  - cms-provenance/provenance-demo-site

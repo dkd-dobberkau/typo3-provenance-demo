@@ -1,0 +1,57 @@
+{
+    "name": "cms-provenance/typo3-provenance-demo",
+    "description": "Demo TYPO3 site for the Content Provenance Specification: signed pages, facts and audit endpoint at conformance level L4",
+    "license": "GPL-2.0-or-later",
+    "type": "project",
+    "require": {
+        "php": "^8.4",
+        "cms-provenance/provenance": "@dev",
+        "cms-provenance/provenance-audit": "@dev",
+        "cms-provenance/provenance-demo-site": "@dev",
+        "cms-provenance/provenance-facts": "@dev",
+        "cms-provenance/provenance-signing": "@dev",
+        "typo3/cms-backend": "^14.3",
+        "typo3/cms-core": "^14.3",
+        "typo3/cms-fluid-styled-content": "^14.3",
+        "typo3/cms-frontend": "^14.3",
+        "typo3/cms-install": "^14.3",
+        "typo3/cms-rte-ckeditor": "^14.3"
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "packages/*"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/dkd-dobberkau/typo3-provenance.git"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/dkd-dobberkau/typo3-provenance-signing.git"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/dkd-dobberkau/typo3-provenance-audit.git"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/dkd-dobberkau/typo3-provenance-facts.git"
+        }
+    ],
+    "config": {
+        "allow-plugins": {
+            "typo3/class-alias-loader": true,
+            "typo3/cms-composer-installers": true
+        },
+        "platform": {
+            "php": "8.4"
+        },
+        "sort-packages": true
+    },
+    "extra": {
+        "typo3/cms": {
+            "web-dir": "public"
+        }
+    }
+}

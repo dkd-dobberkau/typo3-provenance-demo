@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+# First-start setup of the demo, run inside the DDEV web container by the
+# post-start hook. Every step is skipped when its result exists already, so
+# the script is safe to run on each "ddev start".
+set -euo pipefail
+
+cd /var/www/html
+typo3=vendor/bin/typo3
+credentials=.ddev/admin-credentials.txt
+
+if [ ! -f vendor/autoload.php ]; then
+    echo "Installing Composer packages"
+    composer install --no-interaction --no-progress
+fi
+
+if [ ! -f config/system/settings.php ]; then
+    echo "Installing TYPO3"
+    # Letters, digits and a dot only: safe in shells and TYPO3's password policy.
+    password="Demo.$(openssl rand -hex 8)"
+    $typo3 setup --no-interaction --force \
+        --driver=mysqli --host=db --port=3306 --dbname=db --username=db --password=db \
+        --admin-username=admin --admin-user-password="$password" --admin-email=admin@example.org \
+        --project-name="Content Provenance Demo" --server-type=other
+    printf 'User: admin\nPassword: %s\n' "$password" > "$credentials"
+    chmod 600 "$credentials"
+fi
+
+$typo3 extension:setup
+$typo3 provenance-demo:import
+
+if ! $typo3 provenance:keys:list | grep -q active; then
+    $typo3 provenance:keys:generate
+fi
+
+$typo3 provenance:backfill
+$typo3 cache:flush
+
+echo "Demo ready: ${DDEV_PRIMARY_URL:-the site URL}, backend login in $credentials"

@@ -1,0 +1,12 @@
+# Page rendering in the look of cms-provenance.org
+lib.content < styles.content.get
+
+page = PAGE
+page {
+  meta.viewport = width=device-width, initial-scale=1
+  shortcutIcon = EXT:provenance_demo_site/Resources/Public/Icons/favicon.svg
+  10 = PAGEVIEW
+  10.paths.10 = EXT:provenance_demo_site/Resources/Private/PageView/
+  10.dataProcessing.10 = menu
+  10.dataProcessing.10.as = mainNavigation
+}

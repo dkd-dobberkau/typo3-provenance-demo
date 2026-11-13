@@ -1,0 +1,20 @@
+{
+    "name": "cms-provenance/provenance-demo-site",
+    "description": "Site package for the Content Provenance demo: page template in the look of cms-provenance.org and demo content about the history of collecting",
+    "license": "GPL-2.0-or-later",
+    "type": "typo3-cms-extension",
+    "require": {
+        "typo3/cms-core": "^14.3",
+        "typo3/cms-fluid-styled-content": "^14.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "CmsProvenance\\ProvenanceDemoSite\\": "Classes/"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "provenance_demo_site"
+        }
+    }
+}

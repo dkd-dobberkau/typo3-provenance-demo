@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  demo:
+    name: Demo starts and verifies at L4
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      # Starts the project; the post-start hook installs TYPO3 and the demo content.
+      - uses: ddev/github-action-setup-ddev@v1
+      - name: Pages and audit endpoint answer
+        run: |
+          for path in / /the-oldest-museum /cabinets-of-curiosity /from-cabinet-to-public-museum \
+              /the-biography-of-an-object /.well-known/content-provenance; do
+            curl --fail --silent --show-error --insecure --output /dev/null "https://typo3-provenance-demo.ddev.site$path"
+          done
+      - uses: actions/checkout@v7
+        with:
+          repository: dkd-dobberkau/content-provenance-conformance
+          path: conformance
+      - uses: astral-sh/setup-uv@v10.3.3
+      - name: Every page is signed and valid
+        working-directory: conformance/reference/python
+        run: |
+          uv run python verify_site.py --insecure https://typo3-provenance-demo.ddev.site | tee verify.log
+          grep --quiet '^5 documents: 5 valid, 0 invalid, 0 unsigned$' verify.log
+
+  trivy:
+    name: Trivy scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Scan repository for vulnerabilities, secrets and misconfiguration
+        run: >
+          docker run --rm -v "$PWD:/src" aquasec/trivy:0.76.2
+          fs --scanners vuln,secret,misconfig --severity HIGH,CRITICAL --exit-code 1 /src

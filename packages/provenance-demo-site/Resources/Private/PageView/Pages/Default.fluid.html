@@ -1,0 +1,60 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:asset.css identifier="provenanceDemoSiteFonts" href="EXT:provenance_demo_site/Resources/Public/Css/fonts.css" />
+<f:asset.css identifier="provenanceDemoSite" href="EXT:provenance_demo_site/Resources/Public/Css/site.css" />
+<f:asset.script identifier="provenanceDemoSiteRecord" src="EXT:provenance_demo_site/Resources/Public/JavaScript/record-panel.js" defer="1" />
+
+<header class="site-header">
+    <a class="brand" href="/">{language.websiteTitle}<span class="dot">.</span></a>
+    <nav class="main-nav" aria-label="Main">
+        <f:for each="{mainNavigation}" as="item">
+            <a href="{item.link}"{f:if(condition: item.active, then: ' class="is-active" aria-current="page"')}>{item.title}</a>
+        </f:for>
+    </nav>
+    <div class="header-status">
+        <span class="pulse"></span>
+        <span data-cps-status>Provenance record</span>
+    </div>
+</header>
+
+<div class="layout">
+    <main>
+    <article class="content">
+        <div class="intro-meta fade-in" data-cps-ignore>
+            <span>Page {page.id}</span>
+            <span data-cps-modified>Record</span>
+        </div>
+        <h1 class="fade-in d1">{page.pageRecord.title}</h1>
+        <f:if condition="{page.pageRecord.subtitle}">
+            <p class="lede fade-in d2">{page.pageRecord.subtitle}</p>
+        </f:if>
+        <div class="bodytext fade-in d2">
+            <f:cObject typoscriptObjectPath="lib.content" />
+        </div>
+    </article>
+    </main>
+
+    <aside class="artifacts" aria-label="Provenance record of this page">
+        <div class="stamp">
+            <div class="stamp-inner">
+                <div class="label-top" data-cps-stamp-top>No record</div>
+                <span class="num" data-cps-stamp-level>L–</span>
+                <div class="label-bottom" data-cps-stamp-bottom>not signed</div>
+            </div>
+        </div>
+        <pre class="fragment" data-cps-fragment>{ }</pre>
+        <section class="facts" data-cps-facts hidden>
+            <span class="label">— Facts on this page</span>
+            <ol class="fact-list"></ol>
+        </section>
+    </aside>
+</div>
+
+<footer>
+    <span>TYPO3 + provenance · demo site</span>
+    <nav>
+        <a href="/.well-known/content-provenance">Audit listing</a>
+        <a href="https://cms-provenance.org/ns/v1">Vocabulary</a>
+        <a href="https://cms-provenance.org/">cms-provenance.org</a>
+    </nav>
+</footer>
+</html>

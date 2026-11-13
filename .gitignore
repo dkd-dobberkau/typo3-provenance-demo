@@ -1,0 +1,9 @@
+/config/system/*
+!/config/system/additional.php
+/public/
+/var/
+/vendor/
+.ddev/admin-credentials.txt
+.DS_Store
+.idea/
+.playwright-mcp/
