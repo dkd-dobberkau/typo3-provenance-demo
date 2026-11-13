@@ -14,6 +14,15 @@ declare(strict_types=1);
 $wiki = 'https://en.wikipedia.org/wiki/';
 
 return [
+    // Author of every page: a disabled backend user whose public profile is the
+    // "editorial-team" chapter below. The URL matches the DDEV project name.
+    'author' => [
+        'username' => 'demo-editorial-team',
+        'realName' => 'Demo editorial team',
+        'profileUrl' => 'https://typo3-provenance-demo.ddev.site/editorial-team',
+    ],
+    // Date the cited Wikipedia articles were checked; becomes the access date of every source.
+    'sourcesAccessedAt' => '2026-11-13',
     'home' => [
         'page' => [
             'title' => 'A Short History of Collecting',
@@ -175,6 +184,20 @@ return [
                             'confidence' => 'asserted',
                         ],
                     ],
+                ],
+            ],
+        ],
+        'editorial-team' => [
+            'page' => [
+                'title' => 'Editorial team',
+                'subtitle' => 'Who wrote the texts on this site.',
+                'nav_hide' => 1,
+            ],
+            'content' => [
+                [
+                    'header' => 'About the authors',
+                    'bodytext' => '<p>The texts on this demo site were written by the editorial team of the Content Provenance demo. They summarise the Wikipedia articles each page cites; every fact names the article that supports it.</p>'
+                        . '<p>This page is the public profile that the provenance records name as author. A real site would link a profile of each person, such as an ORCID or a staff page.</p>',
                 ],
             ],
         ],

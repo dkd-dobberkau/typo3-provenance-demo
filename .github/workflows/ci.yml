@@ -19,7 +19,7 @@ jobs:
       - name: Pages and audit endpoint answer
         run: |
           for path in / /the-oldest-museum /cabinets-of-curiosity /from-cabinet-to-public-museum \
-              /the-biography-of-an-object /.well-known/content-provenance; do
+              /the-biography-of-an-object /editorial-team /sitemap.xml /.well-known/content-provenance; do
             curl --fail --silent --show-error --insecure --output /dev/null "https://typo3-provenance-demo.ddev.site$path"
           done
       - uses: actions/checkout@v7
@@ -37,7 +37,12 @@ jobs:
         working-directory: conformance/reference/python
         run: |
           uv run python verify_site.py --insecure https://typo3-provenance-demo.ddev.site | tee verify.log
-          grep --quiet '^5 documents: 5 valid, 0 invalid, 0 unsigned$' verify.log
+          grep --quiet ' 0 invalid, 0 unsigned$' verify.log
+      - name: Site reaches L4 and claims no more than it reaches
+        working-directory: conformance/reference/python
+        run: |
+          uv run python check_site.py --insecure https://typo3-provenance-demo.ddev.site | tee site.log
+          grep --quiet 'reaches L4 Citable (claims L4)$' site.log
 
   trivy:
     name: Trivy scan

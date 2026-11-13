@@ -32,7 +32,6 @@ if ! $typo3 provenance:keys:list | grep -q active; then
     $typo3 provenance:keys:generate
 fi
 
-$typo3 provenance:backfill
 $typo3 cache:flush
 
 # Pages are signed when TYPO3 renders them. Render each page of the audit

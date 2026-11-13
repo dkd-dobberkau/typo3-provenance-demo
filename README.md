@@ -6,7 +6,9 @@ are marked as facts with a source, and the audit endpoint lists all documents.
 The site reaches conformance level **L4**.
 
 The demo content is a short history of collecting, from the earliest known
-museum at Ur to provenance research today.
+museum at Ur to provenance research today. Every page has a complete record:
+an author with a public profile (the page *Editorial team*) and the Wikipedia
+articles it cites as sources.
 
 > **Status: experimental, pre-release.** The extensions are installed from
 > their `main` branches. Nothing here is meant for production use.
@@ -40,6 +42,8 @@ and password are written to `.ddev/admin-credentials.txt`.
   <https://typo3-provenance-demo.ddev.site/.well-known/content-provenance>
 - **The site key** used for signatures:
   <https://typo3-provenance-demo.ddev.site/.well-known/content-provenance/keys>
+- **The XML sitemap** and the canonical URL of each page, which level L1
+  requires: <https://typo3-provenance-demo.ddev.site/sitemap.xml>
 
 ## Verify the signatures
 
@@ -52,9 +56,10 @@ cd content-provenance-conformance/reference/python
 uv run python verify_site.py --insecure https://typo3-provenance-demo.ddev.site
 ```
 
-`--insecure` is only needed for DDEV's local certificate. The shape of the
-audit endpoint is checked by `check_endpoint.py`, the facts by
-`check_facts.py`, both from the same directory and with the same arguments.
+`--insecure` is only needed for DDEV's local certificate. `check_site.py`
+from the same directory reports the level each page reaches, from L1 to L4;
+`check_endpoint.py` and `check_facts.py` give the details of the audit
+endpoint and the facts. All take the same arguments.
 
 ## Start over
 

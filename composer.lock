@@ -128,7 +128,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dkd-dobberkau/typo3-provenance.git",
-                "reference": "63190c225b8eed0b1cf765c00c22e4650f22ff00"
+                "reference": "4046bf266be6667fc188f9c59f4182df78658df2"
             },
             "require": {
                 "php": "^8.2",
@@ -193,7 +193,7 @@
                 "issues": "https://github.com/dkd-dobberkau/typo3-provenance/issues",
                 "source": "https://github.com/dkd-dobberkau/typo3-provenance"
             },
-            "time": "2026-11-13T20:35:18+00:00"
+            "time": "2026-11-13T21:09:26+00:00"
         },
         {
             "name": "cms-provenance/provenance-audit",
@@ -201,7 +201,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dkd-dobberkau/typo3-provenance-audit.git",
-                "reference": "5084d5b509c778ab02615643de3915d05ad50bed"
+                "reference": "df3d61e91eed643dc79ee533cacf8a2cd0c8ba55"
             },
             "require": {
                 "cms-provenance/provenance": "^0.1@dev",
@@ -266,7 +266,7 @@
                 "issues": "https://github.com/dkd-dobberkau/typo3-provenance-audit/issues",
                 "source": "https://github.com/dkd-dobberkau/typo3-provenance-audit"
             },
-            "time": "2026-11-13T20:35:21+00:00"
+            "time": "2026-11-13T21:09:31+00:00"
         },
         {
             "name": "cms-provenance/provenance-demo-site",
@@ -274,11 +274,12 @@
             "dist": {
                 "type": "path",
                 "url": "packages/provenance-demo-site",
-                "reference": "22a1c95e19d51be0168f5263e45068b80f03e5e1"
+                "reference": "306c2d33a5038e44fe37243efa557b406ab3c2b2"
             },
             "require": {
                 "typo3/cms-core": "^14.3",
-                "typo3/cms-fluid-styled-content": "^14.3"
+                "typo3/cms-fluid-styled-content": "^14.3",
+                "typo3/cms-seo": "^14.3"
             },
             "type": "typo3-cms-extension",
             "extra": {
@@ -305,7 +306,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dkd-dobberkau/typo3-provenance-facts.git",
-                "reference": "68d4babd17dfc0435dbf6e8d76039dd41e01dece"
+                "reference": "39621cdfa0ebbb1671102d38c2a187fda9a6eb67"
             },
             "require": {
                 "cms-provenance/provenance": "^0.1@dev",
@@ -372,7 +373,7 @@
                 "issues": "https://github.com/dkd-dobberkau/typo3-provenance-facts/issues",
                 "source": "https://github.com/dkd-dobberkau/typo3-provenance-facts"
             },
-            "time": "2026-11-13T20:35:19+00:00"
+            "time": "2026-11-13T21:09:30+00:00"
         },
         {
             "name": "cms-provenance/provenance-signing",
@@ -380,7 +381,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dkd-dobberkau/typo3-provenance-signing.git",
-                "reference": "9529cad09dc6b890c4e4c8192e6521aab9193183"
+                "reference": "a1bd9ca3ba35e238a847c673bc972cdff59375dd"
             },
             "require": {
                 "cms-provenance/provenance": "^0.1@dev",
@@ -447,7 +448,7 @@
                 "issues": "https://github.com/dkd-dobberkau/typo3-provenance-signing/issues",
                 "source": "https://github.com/dkd-dobberkau/typo3-provenance-signing"
             },
-            "time": "2026-11-13T19:43:40+00:00"
+            "time": "2026-11-13T21:09:28+00:00"
         },
         {
             "name": "composer/class-map-generator",
@@ -6975,6 +6976,79 @@
             ],
             "time": "2026-11-10T11:02:36+00:00",
             "published-time": "2026-11-10T11:08:33+00:00"
+        },
+        {
+            "name": "typo3/cms-seo",
+            "version": "v14.3.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TYPO3-CMS/seo.git",
+                "reference": "94c9c300dbb06474a62aa6423d27918c15f31f26"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TYPO3-CMS/seo/zipball/94c9c300dbb06474a62aa6423d27918c15f31f26",
+                "reference": "94c9c300dbb06474a62aa6423d27918c15f31f26",
+                "shasum": ""
+            },
+            "require": {
+                "typo3/cms-core": "14.3.11",
+                "typo3/cms-extbase": "14.3.11",
+                "typo3/cms-frontend": "14.3.11"
+            },
+            "conflict": {
+                "typo3/cms": "*"
+            },
+            "suggest": {
+                "typo3/cms-dashboard": "TYPO3 users can add widgets that can help to optimise their website for search engines"
+            },
+            "type": "typo3-cms-framework",
+            "extra": {
+                "typo3/cms": {
+                    "Package": {
+                        "partOfFactoryDefault": true
+                    },
+                    "extension-key": "seo"
+                },
+                "branch-alias": {
+                    "dev-main": "14.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "TYPO3\\CMS\\Seo\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "TYPO3 Core Team",
+                    "email": "typo3cms@typo3.org",
+                    "role": "Developer"
+                }
+            ],
+            "description": "TYPO3 CMS SEO - SEO features including specific fields for SEO purposes, rendering of HTML meta tags and sitemaps.",
+            "homepage": "https://typo3.community/",
+            "support": {
+                "chat": "https://typo3.community/meet/slack/",
+                "docs": "https://docs.typo3.org/c/typo3/cms-seo/main/en-us/",
+                "forum": "https://talk.typo3.org/",
+                "issues": "https://forge.typo3.org/issues/",
+                "rss": "https://news.typo3.com/rss/",
+                "security": "https://typo3.org/security/",
+                "source": "https://github.com/TYPO3/typo3/"
+            },
+            "funding": [
+                {
+                    "url": "https://typo3.org/membership",
+                    "type": "membership"
+                }
+            ],
+            "time": "2026-11-10T11:02:36+00:00",
+            "published-time": "2026-11-10T11:08:46+00:00"
         },
         {
             "name": "typo3/html-sanitizer",

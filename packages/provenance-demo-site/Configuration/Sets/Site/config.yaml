@@ -2,3 +2,4 @@ name: cms-provenance/provenance-demo-site
 label: 'Content Provenance demo site'
 dependencies:
   - typo3/fluid-styled-content
+  - typo3/seo-sitemap
