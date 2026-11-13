@@ -30,6 +30,9 @@ jobs:
       - name: Audit endpoint conforms to Section 3.4
         working-directory: conformance/reference/python
         run: uv run python check_endpoint.py --insecure https://typo3-provenance-demo.ddev.site
+      - name: Facts conform to Section 3.3
+        working-directory: conformance/reference/python
+        run: uv run python check_facts.py --insecure https://typo3-provenance-demo.ddev.site
       - name: Every page is signed and valid
         working-directory: conformance/reference/python
         run: |

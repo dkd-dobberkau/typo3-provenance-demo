@@ -53,8 +53,8 @@ uv run python verify_site.py --insecure https://typo3-provenance-demo.ddev.site
 ```
 
 `--insecure` is only needed for DDEV's local certificate. The shape of the
-audit endpoint itself is checked by `check_endpoint.py` from the same
-directory, with the same arguments.
+audit endpoint is checked by `check_endpoint.py`, the facts by
+`check_facts.py`, both from the same directory and with the same arguments.
 
 ## Start over
 
