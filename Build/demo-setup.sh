@@ -35,4 +35,13 @@ fi
 $typo3 provenance:backfill
 $typo3 cache:flush
 
+# Pages are signed when TYPO3 renders them. Render each page of the audit
+# listing once, so a verifier finds every page signed right after the start.
+site="${DDEV_PRIMARY_URL:?DDEV_PRIMARY_URL is not set}"
+curl --fail --silent --insecure "$site/.well-known/content-provenance" \
+    | php -r 'foreach (json_decode(stream_get_contents(STDIN))->documents as $document) { echo $document->url, PHP_EOL; }' \
+    | while read -r url; do
+        curl --fail --silent --insecure --output /dev/null "$url"
+    done
+
 echo "Demo ready: ${DDEV_PRIMARY_URL:-the site URL}, backend login in $credentials"

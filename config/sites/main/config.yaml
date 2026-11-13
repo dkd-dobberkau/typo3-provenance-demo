@@ -1,5 +1,5 @@
 rootPageId: 1
-base: 'https://typo3-provenance-demo.ddev.site/'
+base: /
 websiteTitle: 'Content Provenance Demo'
 languages:
   - title: English
