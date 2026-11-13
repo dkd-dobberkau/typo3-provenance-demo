@@ -15,4 +15,5 @@ dependencies:
   - typo3/fluid-styled-content
   - cms-provenance/provenance
   - cms-provenance/provenance-facts
+  - cms-provenance/provenance-mx
   - cms-provenance/provenance-demo-site

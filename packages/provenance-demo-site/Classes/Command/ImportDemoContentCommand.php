@@ -131,6 +131,9 @@ final class ImportDemoContentCommand extends Command
     private function createPage(int $pid, array $fields, int $authorUid, array $sources): int
     {
         $now = time();
+        // The subtitle doubles as the page description: search engines show it,
+        // and the MX meta tags use it as the page's summary.
+        $fields += ['description' => $fields['subtitle'] ?? ''];
         $sourceRecords = [];
         foreach ($sources as $index => $source) {
             $sourceRecords['NEWsource' . $index] = ['pid' => 'NEWpage'] + $source;

@@ -128,7 +128,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dkd-dobberkau/typo3-provenance.git",
-                "reference": "4046bf266be6667fc188f9c59f4182df78658df2"
+                "reference": "29caf812df8bb601ed04674d3fb98b053146357c"
             },
             "require": {
                 "php": "^8.2",
@@ -193,7 +193,7 @@
                 "issues": "https://github.com/dkd-dobberkau/typo3-provenance/issues",
                 "source": "https://github.com/dkd-dobberkau/typo3-provenance"
             },
-            "time": "2026-11-13T21:09:26+00:00"
+            "time": "2026-11-13T23:41:11+00:00"
         },
         {
             "name": "cms-provenance/provenance-audit",

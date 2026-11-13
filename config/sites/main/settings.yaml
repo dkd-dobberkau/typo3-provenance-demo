@@ -1,0 +1,5 @@
+# The demo texts summarise Wikipedia articles (CC BY-SA); training on them
+# is fine as long as the source is named.
+provenance:
+  mx:
+    trainingDataPolicy: 'Permitted with attribution.'

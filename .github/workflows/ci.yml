@@ -43,6 +43,11 @@ jobs:
         run: |
           uv run python check_site.py --insecure https://typo3-provenance-demo.ddev.site | tee site.log
           grep --quiet 'reaches L4 Citable (claims L4)$' site.log
+      - name: MX meta tags reach MX Level 2 and agree with the records
+        working-directory: conformance/reference/python
+        run: |
+          uv run python check_mx.py --insecure https://typo3-provenance-demo.ddev.site | tee mx.log
+          grep --quiet ' 0 at L1, 0 at L0; 0 findings$' mx.log
 
   trivy:
     name: Trivy scan

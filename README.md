@@ -44,6 +44,10 @@ and password are written to `.ddev/admin-credentials.txt`.
   <https://typo3-provenance-demo.ddev.site/.well-known/content-provenance/keys>
 - **The XML sitemap** and the canonical URL of each page, which level L1
   requires: <https://typo3-provenance-demo.ddev.site/sitemap.xml>
+- **MX meta tags** (`<meta name="mx:…">`) in the head of every page, for
+  the Machine Experience vocabulary of The Gathering. They say what the
+  provenance record says; `check_mx.py` in the conformance suite shows the
+  MX level each page reaches.
 - **Facts in the backend**: open a text element, select words in the rich
   text editor and press **Fact**. The dialog can look the fact up in
   Wikidata (`provenance_wikidata`) and fill subject, predicate, value and
