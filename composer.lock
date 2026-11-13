@@ -201,7 +201,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dkd-dobberkau/typo3-provenance-audit.git",
-                "reference": "df3d61e91eed643dc79ee533cacf8a2cd0c8ba55"
+                "reference": "aeb344e6720a5dd01a8b5044601d1fa645855456"
             },
             "require": {
                 "cms-provenance/provenance": "^0.1@dev",
@@ -266,7 +266,7 @@
                 "issues": "https://github.com/dkd-dobberkau/typo3-provenance-audit/issues",
                 "source": "https://github.com/dkd-dobberkau/typo3-provenance-audit"
             },
-            "time": "2026-11-13T21:09:31+00:00"
+            "time": "2026-11-13T21:17:44+00:00"
         },
         {
             "name": "cms-provenance/provenance-demo-site",
@@ -381,7 +381,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dkd-dobberkau/typo3-provenance-signing.git",
-                "reference": "a1bd9ca3ba35e238a847c673bc972cdff59375dd"
+                "reference": "77553b42466ad35b4003944437ecd7fbce62a5e7"
             },
             "require": {
                 "cms-provenance/provenance": "^0.1@dev",
@@ -448,7 +448,7 @@
                 "issues": "https://github.com/dkd-dobberkau/typo3-provenance-signing/issues",
                 "source": "https://github.com/dkd-dobberkau/typo3-provenance-signing"
             },
-            "time": "2026-11-13T21:09:28+00:00"
+            "time": "2026-11-13T21:17:03+00:00"
         },
         {
             "name": "composer/class-map-generator",
