@@ -18,3 +18,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - `provenance-demo:import` command creating the page tree through DataHandler.
 - CI: cold start in DDEV, then `verify_site.py` from the conformance suite
   must report every page as valid; Trivy scan.
+- CI checks the audit endpoint with `check_endpoint.py` from the conformance
+  suite.
