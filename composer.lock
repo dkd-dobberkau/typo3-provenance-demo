@@ -456,7 +456,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dkd-dobberkau/typo3-provenance-wikidata.git",
-                "reference": "59b9cc7b971202fc7c24e79c5da273f4a95fd683"
+                "reference": "350df7d66167d04af18272b220dd5bc6a9cee2ee"
             },
             "require": {
                 "cms-provenance/provenance-facts": "^0.1@dev",
@@ -523,7 +523,7 @@
                 "issues": "https://github.com/dkd-dobberkau/typo3-provenance-wikidata/issues",
                 "source": "https://github.com/dkd-dobberkau/typo3-provenance-wikidata"
             },
-            "time": "2026-11-13T23:03:23+00:00"
+            "time": "2026-11-13T23:13:57+00:00"
         },
         {
             "name": "composer/class-map-generator",
