@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 /**
  * Demo content: a short history of collecting. Checked against the cited
- * Wikipedia articles on 2026-11-13.
+ * Wikipedia articles on 2026-11-13. Fact subjects and objects are Wikidata
+ * items where one exists, so check_wikidata.py can compare them; the source
+ * of every fact stays the Wikipedia article.
  *
  * Every fact quote must appear verbatim, inside a single text node, in the
  * bodytext of its content element. "{chapter-key}" in the home page text is
@@ -12,6 +14,7 @@ declare(strict_types=1);
  */
 
 $wiki = 'https://en.wikipedia.org/wiki/';
+$wikidata = 'http://www.wikidata.org/entity/';
 
 return [
     // Author of every page: a disabled backend user whose public profile is the
@@ -39,7 +42,7 @@ return [
                     [
                         'fact_id' => 'ennigaldi-princess',
                         'quote' => 'a princess at Ur',
-                        'subject' => $wiki . 'Ennigaldi-Nanna',
+                        'subject' => $wikidata . 'Q1339859',
                         'predicate' => 'description',
                         'object_literal' => 'Daughter of Nabonidus and high priestess of the moon god at Ur',
                         'source_url' => $wiki . 'Ennigaldi-Nanna',
@@ -64,18 +67,27 @@ return [
                         [
                             'fact_id' => 'ur-museum-date',
                             'quote' => 'Around 530 BCE',
-                            'subject' => $wiki . "Ennigaldi-Nanna's_museum",
+                            'subject' => $wikidata . 'Q3014063',
                             'predicate' => 'foundingDate',
                             'object_literal' => 'c. 530 BCE',
                             'source_url' => $wiki . "Ennigaldi-Nanna's_museum",
                             'confidence' => 'estimated',
                         ],
                         [
+                            'fact_id' => 'ur-museum-location',
+                            'quote' => 'at Ur',
+                            'subject' => $wikidata . 'Q3014063',
+                            'predicate' => 'containedInPlace',
+                            'object_uri' => $wikidata . 'Q5699',
+                            'source_url' => $wiki . "Ennigaldi-Nanna's_museum",
+                            'confidence' => 'asserted',
+                        ],
+                        [
                             'fact_id' => 'ennigaldi-parent',
                             'quote' => 'a daughter of Nabonidus',
-                            'subject' => $wiki . 'Ennigaldi-Nanna',
+                            'subject' => $wikidata . 'Q1339859',
                             'predicate' => 'parent',
-                            'object_uri' => $wiki . 'Nabonidus',
+                            'object_uri' => $wikidata . 'Q239414',
                             'source_url' => $wiki . 'Ennigaldi-Nanna',
                             'confidence' => 'asserted',
                         ],
@@ -106,9 +118,9 @@ return [
                         [
                             'fact_id' => 'ambras-location',
                             'quote' => 'in the hills above Innsbruck',
-                            'subject' => $wiki . 'Ambras_Castle',
+                            'subject' => $wikidata . 'Q700764',
                             'predicate' => 'containedInPlace',
-                            'object_uri' => $wiki . 'Innsbruck',
+                            'object_uri' => $wikidata . 'Q1735',
                             'source_url' => $wiki . 'Ambras_Castle',
                             'confidence' => 'asserted',
                         ],
@@ -120,12 +132,22 @@ return [
                         . '<p>Its engraved frontispiece shows stuffed animals hanging from the ceiling and shelves of labelled boxes. It became the best-known picture of a cabinet of curiosities.</p>',
                     'facts' => [
                         [
+                            'fact_id' => 'ole-worm-death',
+                            'quote' => 'He died there in 1654',
+                            'subject' => $wikidata . 'Q463570',
+                            'predicate' => 'deathDate',
+                            'object_literal' => '1654',
+                            'source_url' => $wiki . 'Ole_Worm',
+                            'confidence' => 'asserted',
+                        ],
+                        [
+                            // Wikidata has no item for the catalogue itself.
                             'fact_id' => 'museum-wormianum-published',
                             'quote' => 'published in 1655',
                             'subject' => $wiki . 'Museum_Wormianum',
                             'predicate' => 'datePublished',
                             'object_literal' => '1655',
-                            'source_url' => $wiki . 'Museum_Wormianum',
+                            'source_url' => $wiki . 'Ole_Worm',
                             'confidence' => 'asserted',
                         ],
                     ],
@@ -146,7 +168,7 @@ return [
                         [
                             'fact_id' => 'ashmolean-opened',
                             'quote' => 'opened in 1683',
-                            'subject' => $wiki . 'Ashmolean_Museum',
+                            'subject' => $wikidata . 'Q636400',
                             'predicate' => 'foundingDate',
                             'object_literal' => '1683',
                             'source_url' => $wiki . 'Ashmolean_Museum',
@@ -160,9 +182,18 @@ return [
                         . '<p>Its first galleries and a reading room for scholars opened on 15 January 1759.</p>',
                     'facts' => [
                         [
+                            'fact_id' => 'sloane-death',
+                            'quote' => 'died in 1753',
+                            'subject' => $wikidata . 'Q310326',
+                            'predicate' => 'deathDate',
+                            'object_literal' => '1753',
+                            'source_url' => $wiki . 'Hans_Sloane',
+                            'confidence' => 'asserted',
+                        ],
+                        [
                             'fact_id' => 'sloane-collection-size',
                             'quote' => 'around 71,000 objects',
-                            'subject' => $wiki . 'Hans_Sloane',
+                            'subject' => $wikidata . 'Q310326',
                             'predicate' => 'description',
                             'object_literal' => 'Bequeathed a collection of around 71,000 objects',
                             'source_url' => $wiki . 'British_Museum',
@@ -177,7 +208,7 @@ return [
                         [
                             'fact_id' => 'louvre-opened',
                             'quote' => 'In August 1793',
-                            'subject' => $wiki . 'Louvre',
+                            'subject' => $wikidata . 'Q19675',
                             'predicate' => 'foundingDate',
                             'object_literal' => '1793-08-10',
                             'source_url' => $wiki . 'Louvre',
@@ -215,7 +246,7 @@ return [
                         [
                             'fact_id' => 'provenance-etymology',
                             'quote' => 'the French provenir',
-                            'subject' => $wiki . 'Provenance',
+                            'subject' => $wikidata . 'Q1773840',
                             'predicate' => 'description',
                             'object_literal' => 'From French provenir, to come from',
                             'source_url' => $wiki . 'Provenance',
@@ -229,12 +260,21 @@ return [
                         . '<p>The principles ask that confiscated art be identified, that records be opened to researchers and that the art be made public, so that pre-war owners and their heirs can come forward. Where they are found, the aim is a just and fair solution.</p>',
                     'facts' => [
                         [
+                            'fact_id' => 'washington-principles-date',
+                            'quote' => 'In December 1998',
+                            'subject' => $wikidata . 'Q17354266',
+                            'predicate' => 'datePublished',
+                            'object_literal' => '1998-12',
+                            'source_url' => $wiki . 'Washington_Principles_on_Nazi-Confiscated_Art',
+                            'confidence' => 'asserted',
+                        ],
+                        [
                             'fact_id' => 'washington-principles',
                             'quote' => 'attended by 44 countries',
-                            'subject' => $wiki . 'Washington_Conference_Principles_on_Nazi-Confiscated_Art',
+                            'subject' => $wikidata . 'Q17354266',
                             'predicate' => 'description',
                             'object_literal' => 'Presented in December 1998 at a conference attended by 44 countries',
-                            'source_url' => $wiki . 'Washington_Conference_Principles_on_Nazi-Confiscated_Art',
+                            'source_url' => $wiki . 'Washington_Principles_on_Nazi-Confiscated_Art',
                             'confidence' => 'asserted',
                         ],
                     ],
