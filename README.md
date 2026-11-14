@@ -48,6 +48,9 @@ and password are written to `.ddev/admin-credentials.txt`.
   the Machine Experience vocabulary of The Gathering. They say what the
   provenance record says; `check_mx.py` in the conformance suite shows the
   MX level each page reaches.
+- **The backend module Content > Provenance**: "Pages" shows the level of
+  each page's record and what it lacks, "Facts" lists all facts with search
+  and filters.
 - **Facts in the backend**: open a text element, select words in the rich
   text editor and press **Fact**. The dialog can look the fact up in
   Wikidata (`provenance_wikidata`) and fill subject, predicate, value and
