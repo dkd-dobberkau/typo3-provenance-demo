@@ -13,6 +13,8 @@
         "cms-provenance/provenance-wikidata": "@dev",
         "typo3/cms-backend": "^14.3",
         "typo3/cms-core": "^14.3",
+        "typo3/cms-filelist": "^14.0",
+        "typo3/cms-filemetadata": "^14.0",
         "typo3/cms-fluid-styled-content": "^14.3",
         "typo3/cms-frontend": "^14.3",
         "typo3/cms-install": "^14.3",

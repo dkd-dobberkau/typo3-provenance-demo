@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "13eb8247b4e52ad69f86c023a10251c6",
+    "content-hash": "49a73aa9f75599ac97a8851e7fad11ac",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -128,16 +128,20 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dkd-dobberkau/typo3-provenance.git",
-                "reference": "56a29d70a806795654520330028580ae8b83c276"
+                "reference": "22be0df0c770ef3a498c88d08e4425e8eb807150"
             },
             "require": {
                 "php": "^8.2",
                 "typo3/cms-core": "^13.4 || ^14.0"
             },
             "require-dev": {
+                "typo3/cms-filemetadata": "^13.4 || ^14.0",
                 "typo3/cms-fluid": "^13.4 || ^14.0",
                 "typo3/cms-frontend": "^13.4 || ^14.0",
                 "typo3/testing-framework": "^9.7"
+            },
+            "suggest": {
+                "typo3/cms-filemetadata": "Adds creator, copyright and source to file metadata, which the provenance record lists for media"
             },
             "default-branch": true,
             "type": "typo3-cms-extension",
@@ -193,7 +197,7 @@
                 "issues": "https://github.com/dkd-dobberkau/typo3-provenance/issues",
                 "source": "https://github.com/dkd-dobberkau/typo3-provenance"
             },
-            "time": "2026-11-14T10:03:54+00:00"
+            "time": "2026-11-14T11:25:02+00:00"
         },
         {
             "name": "cms-provenance/provenance-audit",
@@ -6681,6 +6685,136 @@
             ],
             "time": "2026-11-10T11:02:36+00:00",
             "published-time": "2026-11-10T11:06:27+00:00"
+        },
+        {
+            "name": "typo3/cms-filelist",
+            "version": "v14.3.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TYPO3-CMS/filelist.git",
+                "reference": "94d80839559f002fa8b2d61c614dace23b0e3779"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TYPO3-CMS/filelist/zipball/94d80839559f002fa8b2d61c614dace23b0e3779",
+                "reference": "94d80839559f002fa8b2d61c614dace23b0e3779",
+                "shasum": ""
+            },
+            "require": {
+                "typo3/cms-core": "14.3.11"
+            },
+            "conflict": {
+                "typo3/cms": "*"
+            },
+            "type": "typo3-cms-framework",
+            "extra": {
+                "typo3/cms": {
+                    "Package": {
+                        "protected": true,
+                        "partOfFactoryDefault": true,
+                        "partOfMinimalUsableSystem": true
+                    },
+                    "extension-key": "filelist"
+                },
+                "branch-alias": {
+                    "dev-main": "14.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "TYPO3\\CMS\\Filelist\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "TYPO3 Core Team",
+                    "email": "typo3cms@typo3.org",
+                    "role": "Developer"
+                }
+            ],
+            "description": "TYPO3 CMS Filelist - TYPO3 backend module 'Media' used for managing files.",
+            "homepage": "https://typo3.community/",
+            "support": {
+                "chat": "https://typo3.community/meet/slack/",
+                "docs": "https://docs.typo3.org/",
+                "forum": "https://talk.typo3.org/",
+                "issues": "https://forge.typo3.org/issues/",
+                "rss": "https://news.typo3.com/rss/",
+                "security": "https://typo3.org/security/",
+                "source": "https://github.com/TYPO3/typo3/"
+            },
+            "funding": [
+                {
+                    "url": "https://typo3.org/membership",
+                    "type": "membership"
+                }
+            ],
+            "time": "2026-11-10T11:02:36+00:00",
+            "published-time": "2026-11-10T11:06:49+00:00"
+        },
+        {
+            "name": "typo3/cms-filemetadata",
+            "version": "v14.3.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TYPO3-CMS/filemetadata.git",
+                "reference": "bd2cf2e1aa0e6f6ba59a25fbacd31be1f370c182"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TYPO3-CMS/filemetadata/zipball/bd2cf2e1aa0e6f6ba59a25fbacd31be1f370c182",
+                "reference": "bd2cf2e1aa0e6f6ba59a25fbacd31be1f370c182",
+                "shasum": ""
+            },
+            "require": {
+                "typo3/cms-core": "14.3.11"
+            },
+            "conflict": {
+                "typo3/cms": "*"
+            },
+            "type": "typo3-cms-framework",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "filemetadata"
+                },
+                "branch-alias": {
+                    "dev-main": "14.3.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "TYPO3 Core Team",
+                    "email": "typo3cms@typo3.org",
+                    "role": "Developer"
+                }
+            ],
+            "description": "TYPO3 CMS File Metadata - Adds additional metadata to file management.",
+            "homepage": "https://typo3.community/",
+            "support": {
+                "chat": "https://typo3.community/meet/slack/",
+                "docs": "https://docs.typo3.org/",
+                "forum": "https://talk.typo3.org/",
+                "issues": "https://forge.typo3.org/issues/",
+                "rss": "https://news.typo3.com/rss/",
+                "security": "https://typo3.org/security/",
+                "source": "https://github.com/TYPO3/typo3/"
+            },
+            "funding": [
+                {
+                    "url": "https://typo3.org/membership",
+                    "type": "membership"
+                }
+            ],
+            "time": "2026-11-10T11:02:36+00:00",
+            "published-time": "2026-11-10T11:06:56+00:00"
         },
         {
             "name": "typo3/cms-fluid",
