@@ -25,8 +25,11 @@ if [ ! -f config/system/settings.php ]; then
     chmod 600 "$credentials"
 fi
 
+# Commands of packages added since the last start need a fresh container.
+$typo3 cache:flush
 $typo3 extension:setup
 $typo3 provenance-demo:import
+$typo3 provenance-demo:editor
 
 if ! $typo3 provenance:keys:list | grep -q active; then
     $typo3 provenance:keys:generate
@@ -46,4 +49,6 @@ curl --fail --silent --insecure "$site/.well-known/content-provenance" \
 # The backend login, so nobody has to look for it after the first start.
 password=$(sed -n 's/^Password: //p' "$credentials")
 echo "Demo ready: ${site}"
-echo "Backend:    ${site}/typo3  (user admin, password ${password}; also in $credentials)"
+echo "Backend:    ${site}/typo3"
+echo "  Editor:   user editor, password Demo-Editor-1"
+echo "  Admin:    user admin, password ${password} (also in $credentials)"

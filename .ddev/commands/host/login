@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+## Description: Show the backend logins of the demo and open the backend
+## Usage: login
+## Example: "ddev login"
+
+credentials=.ddev/admin-credentials.txt
+echo "Backend: ${DDEV_PRIMARY_URL}/typo3"
+echo "Editor:  user editor, password Demo-Editor-1"
+if [ -f "$credentials" ]; then
+    echo "Admin:   user admin, password $(sed -n 's/^Password: //p' "$credentials")"
+else
+    echo "Admin:   not installed yet, run ddev start"
+fi
+ddev launch /typo3/

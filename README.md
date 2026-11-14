@@ -28,11 +28,17 @@ The first `ddev start` takes a few minutes. It installs TYPO3 14 and the five
 provenance extensions, creates the demo pages, generates the site's Ed25519
 key and the provenance records. Later starts skip the steps that are done.
 
-The backend is at <https://typo3-provenance-demo.ddev.site/typo3>. User name
-and password are shown at the end of `ddev start` and written to
-`.ddev/admin-credentials.txt` (`cat .ddev/admin-credentials.txt`). The
-password is generated when the demo is installed, so after
-[Start over](#start-over) there is a new one.
+The backend is at <https://typo3-provenance-demo.ddev.site/typo3>. Two
+accounts exist:
+
+- **editor**, password `Demo-Editor-1`: an editor who may change pages,
+  content, provenance records and facts and use the Provenance module. This
+  login is public and shown on the login page.
+- **admin**: the password is generated when the demo is installed (so after
+  [Start over](#start-over) there is a new one), shown at the end of
+  `ddev start` and written to `.ddev/admin-credentials.txt`.
+
+`ddev login` prints both logins and opens the backend.
 
 ## What to look at
 

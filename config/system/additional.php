@@ -28,6 +28,12 @@ if (getenv('IS_DDEV_PROJECT') === 'true') {
                 'transport' => 'smtp',
                 'transport_smtp_server' => 'localhost:1025',
             ],
+            // The demo editor's login is public; the admin password is not shown here.
+            'EXTENSIONS' => [
+                'backend' => [
+                    'loginFootnote' => 'Demo login: user "editor", password "Demo-Editor-1". Run "ddev login" for the admin account.',
+                ],
+            ],
             'SYS' => [
                 'trustedHostsPattern' => '.*.*',
                 'devIPmask' => '*',
