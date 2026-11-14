@@ -433,7 +433,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dkd-dobberkau/typo3-provenance-signing.git",
-                "reference": "77553b42466ad35b4003944437ecd7fbce62a5e7"
+                "reference": "fd3d6a2724c0f778255e7d901d7698f9f0afd3a9"
             },
             "require": {
                 "cms-provenance/provenance": "^0.1@dev",
@@ -500,7 +500,7 @@
                 "issues": "https://github.com/dkd-dobberkau/typo3-provenance-signing/issues",
                 "source": "https://github.com/dkd-dobberkau/typo3-provenance-signing"
             },
-            "time": "2026-11-13T21:17:03+00:00"
+            "time": "2026-11-14T19:05:29+00:00"
         },
         {
             "name": "cms-provenance/provenance-wikidata",
