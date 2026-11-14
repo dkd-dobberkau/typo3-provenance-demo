@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f748d55ef3e953e2c6654bd451b8871c",
+    "content-hash": "07a77584b291903c86fb64a54d3907b8",
     "packages": [
         {
             "name": "b13/ai-bots-love-markdown",
@@ -852,6 +852,45 @@
             },
             "time": "2025-09-16T12:23:56+00:00",
             "published-time": "2025-09-16T12:25:04+00:00"
+        },
+        {
+            "name": "dkd-dobberkau/copy-page-markdown",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dkd-dobberkau/copy-page-markdown.git",
+                "reference": "1caeb1e69417bc62cf943e25c99872ed4de7da82"
+            },
+            "require": {
+                "b13/ai-bots-love-markdown": "^0.6",
+                "php": "^8.2",
+                "typo3/cms-core": "^13.4 || ^14.0",
+                "typo3/cms-frontend": "^13.4 || ^14.0"
+            },
+            "default-branch": true,
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "copy_page_markdown"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Dkd\\CopyPageMarkdown\\": "Classes/"
+                }
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "dkd Internet Service GmbH",
+                    "email": "info@dkd.de",
+                    "homepage": "https://www.dkd.de"
+                }
+            ],
+            "description": "Frontend widget that lets visitors copy any TYPO3 page as Markdown for LLMs. Builds on b13/ai-bots-love-markdown for the Markdown endpoint.",
+            "time": "2026-11-14T12:08:52+00:00"
         },
         {
             "name": "doctrine/dbal",
@@ -7588,7 +7627,8 @@
         "cms-provenance/provenance-demo-site": 20,
         "cms-provenance/provenance-facts": 20,
         "cms-provenance/provenance-signing": 20,
-        "cms-provenance/provenance-wikidata": 20
+        "cms-provenance/provenance-wikidata": 20,
+        "dkd-dobberkau/copy-page-markdown": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

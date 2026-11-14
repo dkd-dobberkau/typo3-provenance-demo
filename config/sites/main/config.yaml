@@ -17,4 +17,13 @@ dependencies:
   - cms-provenance/provenance-facts
   - cms-provenance/provenance-mx
   - b13/ai-bots-love-markdown
+  - dkd/copy-page-markdown
   - cms-provenance/provenance-demo-site
+routeEnhancers:
+  # The Markdown version of a page (b13/ai-bots-love-markdown) at /<page>.md,
+  # the start page at /index.md.
+  PageTypeSuffix:
+    type: PageType
+    index: index
+    map:
+      .md: 2026
