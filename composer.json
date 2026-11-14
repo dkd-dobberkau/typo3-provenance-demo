@@ -5,6 +5,7 @@
     "type": "project",
     "require": {
         "php": "^8.4",
+        "b13/ai-bots-love-markdown": "^0.6",
         "cms-provenance/provenance": "@dev",
         "cms-provenance/provenance-audit": "@dev",
         "cms-provenance/provenance-demo-site": "@dev",

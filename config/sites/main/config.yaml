@@ -16,4 +16,5 @@ dependencies:
   - cms-provenance/provenance
   - cms-provenance/provenance-facts
   - cms-provenance/provenance-mx
+  - b13/ai-bots-love-markdown
   - cms-provenance/provenance-demo-site
