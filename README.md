@@ -29,7 +29,10 @@ provenance extensions, creates the demo pages, generates the site's Ed25519
 key and the provenance records. Later starts skip the steps that are done.
 
 The backend is at <https://typo3-provenance-demo.ddev.site/typo3>. User name
-and password are written to `.ddev/admin-credentials.txt`.
+and password are shown at the end of `ddev start` and written to
+`.ddev/admin-credentials.txt` (`cat .ddev/admin-credentials.txt`). The
+password is generated when the demo is installed, so after
+[Start over](#start-over) there is a new one.
 
 ## What to look at
 

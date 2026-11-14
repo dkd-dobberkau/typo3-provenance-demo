@@ -43,4 +43,7 @@ curl --fail --silent --insecure "$site/.well-known/content-provenance" \
         curl --fail --silent --insecure --output /dev/null "$url"
     done
 
-echo "Demo ready: ${DDEV_PRIMARY_URL:-the site URL}, backend login in $credentials"
+# The backend login, so nobody has to look for it after the first start.
+password=$(sed -n 's/^Password: //p' "$credentials")
+echo "Demo ready: ${site}"
+echo "Backend:    ${site}/typo3  (user admin, password ${password}; also in $credentials)"
