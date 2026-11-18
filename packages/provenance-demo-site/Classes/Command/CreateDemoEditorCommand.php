@@ -69,6 +69,14 @@ final class CreateDemoEditorCommand extends Command
                 'pagetypes_select' => '1,254',
                 'non_exclude_fields' => implode(',', $this->excludeFields()),
                 'explicit_allowdeny' => implode(',', $this->contentTypes()),
+                // The login is shared: nobody may lock the others out with a
+                // new password or a second factor.
+                'TSconfig' => implode("\n", [
+                    'setup.fields.password.disabled = 1',
+                    'setup.fields.password2.disabled = 1',
+                    'setup.fields.passwordCurrent.disabled = 1',
+                    'auth.mfa.disableProviders = totp,recovery-codes',
+                ]),
             ]],
             'be_users' => ['NEWeditor' => [
                 'pid' => 0,
