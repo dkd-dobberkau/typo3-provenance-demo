@@ -24,3 +24,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - CI checks the audit endpoint with `check_endpoint.py`, the facts with
   `check_facts.py` and the level of every page with `check_site.py` from the
   conformance suite.
+- Container image (`Dockerfile`) and mittwald container stack
+  (`docker-compose.mittwald.yml`) for the public demo at
+  demo.cms-provenance.org. The container saves its state after the setup and
+  restores it every full hour (`Build/demo-reset.sh`); `Build/deploy-mittwald.sh`
+  deploys an image. CI starts the image, checks it and pushes it to ghcr.io.
+- The demo editors may not change their password or add a second factor:
+  the login is shared.
+
+### Changed
+
+- The site base comes from `DEMO_SITE_URL`; DDEV sets it in `.ddev/config.yaml`.
+  After pulling this change, run `ddev restart`.

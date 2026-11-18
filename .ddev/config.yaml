@@ -11,7 +11,9 @@ database:
     version: "10.11"
 use_dns_when_possible: true
 composer_version: "2"
-web_environment: []
+web_environment:
+    # The site base in config/sites/main/config.yaml.
+    - DEMO_SITE_URL=https://typo3-provenance-demo.ddev.site/
 nodejs_version: "24"
 corepack_enable: false
 

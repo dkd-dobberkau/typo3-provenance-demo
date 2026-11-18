@@ -1,0 +1,45 @@
+# The demo as a mittwald container stack (demo.cms-provenance.org), deployed
+# by Build/deploy-mittwald.sh with the values from .deploy.env. The same file
+# runs the image locally, see README.md, "Container image".
+services:
+  web:
+    image: ghcr.io/dkd-dobberkau/typo3-provenance-demo:${VERSION:-latest}
+    restart: unless-stopped
+    ports:
+      - "${WEB_PORT:-8080}:8080"
+    environment:
+      DEMO_SITE_URL: ${DEMO_SITE_URL}
+      DEMO_DB_HOST: ${DEMO_DB_HOST:-db}
+      DEMO_DB_NAME: demo
+      DEMO_DB_USER: demo
+      DEMO_DB_PASSWORD: ${DEMO_DB_PASSWORD}
+    volumes:
+      # settings.php, the site key, the saved demo state, caches and logs.
+      - demo-var:/var/www/html/var
+    deploy:
+      resources:
+        limits:
+          cpus: "1"
+          memory: 1g
+
+  db:
+    image: mariadb:10.11
+    restart: unless-stopped
+    ports:
+      - "3306"
+    environment:
+      MARIADB_DATABASE: demo
+      MARIADB_USER: demo
+      MARIADB_PASSWORD: ${DEMO_DB_PASSWORD}
+      MARIADB_RANDOM_ROOT_PASSWORD: "yes"
+    volumes:
+      - demo-database:/var/lib/mysql
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512m
+
+volumes:
+  demo-var:
+  demo-database:

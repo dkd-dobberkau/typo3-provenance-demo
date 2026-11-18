@@ -1,5 +1,6 @@
 rootPageId: 1
-base: 'https://typo3-provenance-demo.ddev.site/'
+# DDEV sets it in .ddev/config.yaml, the demo container in its environment.
+base: '%env(DEMO_SITE_URL)%'
 websiteTitle: 'Content Provenance Demo'
 languages:
   - title: English

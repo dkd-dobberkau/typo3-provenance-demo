@@ -89,14 +89,43 @@ rm -rf vendor public var config/system/settings.php .ddev/admin-credentials.txt
 ddev start
 ```
 
+## Container image
+
+The public demo at <https://demo.cms-provenance.org> runs the same site as a
+container image on mittwald container hosting. CI builds the image, starts it
+with `docker-compose.mittwald.yml`, checks it like the DDEV project and, on
+`main`, pushes it to `ghcr.io/dkd-dobberkau/typo3-provenance-demo`.
+
+On its first start the container runs `Build/demo-setup.sh` and saves the
+result. At every full hour `Build/demo-reset.sh` restores that state, so
+whatever visitors change in the backend lasts an hour at most. The site key
+stays, so the signatures keep verifying. The editor cannot change the shared
+password or add a second factor.
+
+To run the image locally (Apache listens on port 8080):
+
+```bash
+docker build -t ghcr.io/dkd-dobberkau/typo3-provenance-demo:local .
+VERSION=local DEMO_SITE_URL=http://localhost:8080/ DEMO_DB_PASSWORD=local \
+    docker compose -f docker-compose.mittwald.yml up
+```
+
+To deploy an image CI has pushed: copy `.deploy.env.example` to
+`.deploy.env`, fill it in and run `Build/deploy-mittwald.sh` (the image of
+the current commit) or `Build/deploy-mittwald.sh <tag>`.
+
 ## What is in this repository
 
 | Path | Content |
 | --- | --- |
 | `.ddev/config.yaml` | DDEV project; its post-start hook runs `Build/demo-setup.sh` |
 | `Build/demo-setup.sh` | First-start setup: Composer, TYPO3, demo content, site key, records |
-| `config/sites/main/` | Site configuration with the provenance site sets |
-| `config/system/additional.php` | DDEV database and trusted hosts settings |
+| `Build/demo-reset.sh` | Saves the demo state in the container and restores it every hour |
+| `Build/container/` | Entrypoint, Apache and PHP settings of the container image |
+| `Build/deploy-mittwald.sh` | Deploys an image to the mittwald container stack |
+| `Dockerfile`, `docker-compose.mittwald.yml` | The container image and the stack it runs in |
+| `config/sites/main/` | Site configuration with the provenance site sets; its base comes from `DEMO_SITE_URL` |
+| `config/system/additional.php` | Database, trusted hosts and proxy settings for DDEV and the container |
 | `packages/provenance-demo-site/` | Site package: page template, styles, record panel, `provenance-demo:import` command and the demo content |
 
 ## The extensions

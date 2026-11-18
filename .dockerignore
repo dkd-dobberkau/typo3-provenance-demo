@@ -1,0 +1,12 @@
+# Only what the Dockerfile copies; everything generated is rebuilt in the image.
+.git
+.github
+.ddev
+.idea
+.playwright-mcp
+.DS_Store
+.deploy.env
+public
+var
+vendor
+config/system/settings.php

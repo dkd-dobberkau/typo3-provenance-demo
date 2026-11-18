@@ -58,3 +58,56 @@ jobs:
         run: >
           docker run --rm -v "$PWD:/src" aquasec/trivy:0.76.2
           fs --scanners vuln,secret,misconfig --severity HIGH,CRITICAL --exit-code 1 /src
+
+  image:
+    name: Container image starts and verifies at L4
+    runs-on: ubuntu-latest
+    needs: [demo, trivy]
+    permissions:
+      contents: read
+      packages: write
+    env:
+      IMAGE: ghcr.io/dkd-dobberkau/typo3-provenance-demo
+      VERSION: ${{ github.sha }}
+      DEMO_SITE_URL: http://localhost:8080/
+      DEMO_DB_PASSWORD: ci
+    steps:
+      - uses: actions/checkout@v7
+      # mittwald runs linux/amd64, like the runner, so the image is built for it only.
+      - name: Build
+        run: docker build --build-arg DEMO_VERSION="$VERSION" --tag "$IMAGE:$VERSION" --tag "$IMAGE:latest" .
+      - name: Start the stack as mittwald does
+        run: |
+          docker compose -f docker-compose.mittwald.yml up --detach
+          for _ in $(seq 1 90); do
+            docker compose -f docker-compose.mittwald.yml logs web | grep --quiet 'Saved the demo state' && exit 0
+            sleep 5
+          done
+          docker compose -f docker-compose.mittwald.yml logs web
+          exit 1
+      - uses: actions/checkout@v7
+        with:
+          repository: dkd-dobberkau/content-provenance-conformance
+          path: conformance
+      - uses: astral-sh/setup-uv@v10.3.3
+      - name: Every page is signed and valid, the site reaches L4
+        working-directory: conformance/reference/python
+        run: |
+          uv run python verify_site.py http://localhost:8080 | tee verify.log
+          grep --quiet ' 0 invalid, 0 unsigned$' verify.log
+          uv run python check_site.py http://localhost:8080 | tee site.log
+          grep --quiet 'reaches L4 Citable (claims L4)$' site.log
+      - name: The reset restores the saved state
+        run: |
+          docker compose -f docker-compose.mittwald.yml exec -T db \
+            mariadb -udemo -p"$DEMO_DB_PASSWORD" demo -e "update pages set title = 'Changed' where uid = 6"
+          docker compose -f docker-compose.mittwald.yml exec -T web Build/demo-reset.sh
+          docker compose -f docker-compose.mittwald.yml exec -T db \
+            mariadb -udemo -p"$DEMO_DB_PASSWORD" demo -N -e "select title from pages where uid = 6" \
+            | grep --quiet '^The Oldest Museum$'
+      - name: Push to ghcr.io
+        if: github.ref == 'refs/heads/main'
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
+          docker push "$IMAGE:$VERSION"
+          docker push "$IMAGE:latest"
