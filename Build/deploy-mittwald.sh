@@ -21,6 +21,7 @@ set -a
 # shellcheck source=/dev/null
 . .deploy.env
 set +a
+: "${PROJECT_ID:?PROJECT_ID missing from .deploy.env}"
 : "${STACK_ID:?STACK_ID missing from .deploy.env}"
 : "${DEMO_SITE_URL:?DEMO_SITE_URL missing from .deploy.env}"
 : "${DEMO_DB_PASSWORD:?DEMO_DB_PASSWORD missing from .deploy.env}"
@@ -50,7 +51,7 @@ wait_for_version() {
 }
 
 web_container() {
-    mw container list --project-id "$STACK_ID" --output json \
+    mw container list --project-id "$PROJECT_ID" --output json \
         | python3 -c 'import json, sys; print(next(c["shortId"] for c in json.load(sys.stdin) if c["serviceName"] == "web"))'
 }
 
@@ -60,10 +61,10 @@ if [ "$tag" != latest ]; then
     echo "Waiting for ${site}/demo-version.txt to report ${tag}"
     if ! wait_for_version "$tag"; then
         echo "Still serving '$(live_version)'; recreating the web container"
-        mw container recreate "$(web_container)" --project-id "$STACK_ID" --force
+        mw container recreate "$(web_container)" --project-id "$PROJECT_ID" --force
         wait_for_version "$tag" || {
             echo "ERROR: ${site} still serves '$(live_version)' instead of ${tag}" >&2
-            mw container logs "$(web_container)" --project-id "$STACK_ID" | tail -30 || true
+            mw container logs "$(web_container)" --project-id "$PROJECT_ID" | tail -30 || true
             exit 1
         }
     fi
