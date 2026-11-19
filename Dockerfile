@@ -50,10 +50,12 @@ RUN mkdir -p var public/fileadmin public/typo3temp \
 # Late ARG so a new commit does not rebuild the layers above.
 ARG DEMO_VERSION=unknown
 RUN echo "$DEMO_VERSION" > public/demo-version.txt
+# DEMO_RENDER_URL is an IPv4 address: TYPO3 trusts 127.0.0.1 as proxy, and
+# "localhost" resolves to ::1 on mittwald.
 ENV DEMO_CONTAINER=true \
     DEMO_VERSION=$DEMO_VERSION \
     DEMO_ADMIN_LOGIN_FILE=var/demo/admin-credentials.txt \
-    DEMO_RENDER_URL=http://localhost:8080 \
+    DEMO_RENDER_URL=http://127.0.0.1:8080 \
     TYPO3_CONTEXT=Production
 
 USER www-data
