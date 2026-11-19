@@ -105,6 +105,11 @@ jobs:
           docker compose -f docker-compose.mittwald.yml exec -T db \
             mariadb -udemo -p"$DEMO_DB_PASSWORD" demo -N -e "select title from pages where uid = 6" \
             | grep --quiet '^The Oldest Museum$'
+      # The image is public: nothing secret may end up in a layer.
+      - name: Image contains no secrets
+        run: >
+          docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy:0.76.2
+          image --scanners secret --severity HIGH,CRITICAL --exit-code 1 "$IMAGE:$VERSION"
       - name: Push to ghcr.io
         if: github.ref == 'refs/heads/main'
         run: |
