@@ -83,10 +83,12 @@ if (getenv('DEMO_CONTAINER') === 'true') {
                 // The mittwald ingress terminates TLS and connects from the
                 // shared address space 100.64.0.0/10 (RFC 6598). It appends
                 // its peer to X-Forwarded-For, so the last entry is the one
-                // a client cannot choose.
-                'reverseProxyIP' => getenv('DEMO_REVERSE_PROXY_IP') ?: '100.64.0.0/10',
+                // a client cannot choose. The setup renders the pages through
+                // localhost as if it were the ingress (Build/demo-setup.sh);
+                // for localhost the scheme comes from X-Forwarded-Proto.
+                'reverseProxyIP' => (getenv('DEMO_REVERSE_PROXY_IP') ?: '100.64.0.0/10') . ',127.0.0.1',
                 'reverseProxyHeaderMultiValue' => 'last',
-                'reverseProxySSL' => '*',
+                'reverseProxySSL' => getenv('DEMO_REVERSE_PROXY_IP') ?: '100.64.0.0/10',
                 'displayErrors' => 0,
             ],
         ]

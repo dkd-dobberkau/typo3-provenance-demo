@@ -53,6 +53,7 @@ RUN echo "$DEMO_VERSION" > public/demo-version.txt
 ENV DEMO_CONTAINER=true \
     DEMO_VERSION=$DEMO_VERSION \
     DEMO_ADMIN_LOGIN_FILE=var/demo/admin-credentials.txt \
+    DEMO_RENDER_URL=http://localhost:8080 \
     TYPO3_CONTEXT=Production
 
 USER www-data

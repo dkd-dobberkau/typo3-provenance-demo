@@ -43,10 +43,17 @@ $typo3 cache:flush
 # listing once, so a verifier finds every page signed right after the start.
 site="${DEMO_SITE_URL:-${DDEV_PRIMARY_URL:?Neither DEMO_SITE_URL nor DDEV_PRIMARY_URL is set}}"
 site="${site%/}"
-curl --fail --silent --insecure "$site/.well-known/content-provenance" \
+# The mittwald ingress routes to the demo container only once it is ready, so
+# the container renders through its own web server (DEMO_RENDER_URL). The
+# requests carry the public host and scheme, as the ingress would send them.
+render_url="${DEMO_RENDER_URL:-$site}"
+render() {
+    curl --fail --silent --insecure --header "Host: ${site#*://}" --header "X-Forwarded-Proto: ${site%%://*}" "$@"
+}
+render "$render_url/.well-known/content-provenance" \
     | php -r 'foreach (json_decode(stream_get_contents(STDIN))->documents as $document) { echo $document->url, PHP_EOL; }' \
     | while read -r url; do
-        curl --fail --silent --insecure --output /dev/null "$url"
+        render --output /dev/null "$render_url${url#"$site"}"
     done
 
 # The backend login, so nobody has to look for it after the first start.
